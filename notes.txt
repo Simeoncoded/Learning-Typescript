@@ -62,3 +62,26 @@ The syntax for a function type looks lke this
 
 for example, a function that takes two numbers and returns a number
 (a: number, b: number) => number
+
+
+//IMPORTING TYPES
+with certain Typescript configurations you can import types directly from a module
+
+import { User, Post } from "./models";
+
+But its much safer and more efficient to use the import type syntax
+
+import type { User, Post } from "./models";
+
+This way Typescript knows that you are only importing types, and it can drop the imports from the compiled Javascript code.
+This syntax also works:
+
+import { type User, type Post } from "./models";
+
+//UNIONS
+Union types use the pipe symbol (|) and allow you to specify that a value can be one of several types
+
+//user id is a string OR a number
+let userId: string | number
+userId = "user_42";
+userId = 42;

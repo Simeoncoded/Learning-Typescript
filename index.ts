@@ -63,5 +63,5 @@ export function greetCustomer(name: string){
 }
 
 export function farewellCustomer(name: string){
-    return `Goodbye ${name}, have a great day!`; 
+    return `Goodbye ${name}, have a great day`; 
 }
