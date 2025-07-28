@@ -1,0 +1,29 @@
+Anders Hejlsberg is the lead architect of typescript
+
+Typescript is just a superset of javascript. It includes all the same stuff that javascript includes.
+It just adds some fancy stuff on top of it.
+
+The whole point of Typescript is to add static typing to javascript, 
+
+const bootupMessage : string = "";(the string annotation on the bootupMessage variable? Thats telling typescript ,hey the thing 
+that follows is a string)
+
+Javascript is dynamic and loosely typed, 
+
+//javascript: 
+function add(a, b){
+    return a + b;
+}
+
+//typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+
+
+Typescripts Compiler - TSC
+
+all javascript code is valid typescript
+but all typescript code is not valid javascript 
+
+The any type is essentially a type that can literally be anything 
