@@ -26,4 +26,39 @@ Typescripts Compiler - TSC
 all javascript code is valid typescript
 but all typescript code is not valid javascript 
 
-The any type is essentially a type that can literally be anything 
+The any type is essentially a type that can literally be anything. It could be a string, a number, a boolean, anything literally.
+
+export const systemPrompt : any = 
+    "Your purpose is to help";
+
+export const tokenLimit : any = 1000;
+export const hasAdminAccess : any = true;
+
+types in typescript
+
+number, string, boolean, any , symbol, null, undefined
+
+//FUNCTIONS
+
+export function calculateTotal(
+    price: number,
+    quantity: number,
+    discount: number,
+) : number {
+    return price * quantity * (1 - discount);
+}
+
+//void 
+The TS-specific void type represents the return value of functions that dont return a value.    
+In javascript a function without a return statement returns undefined by default.
+Typescript uses the void keyword to indicate thar truely nothing is returned.
+
+//function types
+A function's type includes information about its parameters and return value
+
+The syntax for a function type looks lke this 
+
+(param1: type1, param2: type2, ...) => returnType
+
+for example, a function that takes two numbers and returns a number
+(a: number, b: number) => number
