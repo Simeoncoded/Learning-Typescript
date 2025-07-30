@@ -85,3 +85,35 @@ Union types use the pipe symbol (|) and allow you to specify that a value can be
 let userId: string | number
 userId = "user_42";
 userId = 42;
+
+//OPTIONAL PARAMETERS 
+You can specify function parameters as optional with a question mark (?) after the name 
+
+function greet(name: string, title?: string): string {
+    if(title){
+        return `Hello, ${title} ${name}!`;
+    }
+    return `Hello, ${name}!`;
+}   
+
+There are two rules to keep in mind when using optional parameters:
+
+1. Optional parameters must come after required parameters.
+
+
+//DEFAULT PARAMETERS
+Default parameters provide fallback values for optional arguments.
+
+//LITERAL TYPES
+Many other statically typed languages (including Go) don't nearly have nearly as extensive
+and powerful type systems as Typescript. It should be obvious because its in the name, but
+Typescript truly has a massive type system.
+
+Literal types are incredibly powerful for narrowing the possible values of a variable.
+
+* A string can have an infinite number of values.
+* A number can have an infinite number of values.
+
+So what if we want to declare a "direction" variable?
+
+
