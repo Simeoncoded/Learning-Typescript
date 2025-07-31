@@ -117,3 +117,120 @@ Literal types are incredibly powerful for narrowing the possible values of a var
 So what if we want to declare a "direction" variable?
 
 
+//VALUE UNIONS
+Take another look at our last example of a literal type:
+
+function move(direction: "north"){
+    //implementation
+}
+
+To make it a bit more useful, lets combine that idea with a union type:
+
+
+function move(direction: "north" | "south" | "east"){
+    //implementation
+}
+
+And then let's refactor it to make a new "Direction" type that we can reuse:
+
+type Direction = "north" | "south" | "east" | "west";
+
+function move(direction: Direction){
+    //Implementation
+}
+
+//SUPER SET UNIONS 
+So we know we can drastically narrow a primitive type like "number" by using a union of literal types.
+For example, maybe only 3 error codes are valid:
+
+type ErrorCodes = 200 | 404 | 500;
+
+This works great if these are the only valid error codes,
+but what if:
+
+1. Any number can be used as an error code
+
+//TEMPLATE LITERAL TYPES
+This is one of the more unhinged features of TypeScript(at least in my opinion),
+but it is really cool and insanely powerful when you find a good use case for it.
+
+Remember literal types and type unions? 
+
+type Class  = "wizard" | "warrior" | "rogue";
+
+Well you can also create literal types using string templates:
+
+type Hero = `elf ${Class}`;
+
+The type of Class expands automatically to the possible values,  so the above is the same as:
+
+type Hero = "elf wizard" | "elf warrior" | "elf rogue";
+
+You can also get crazy and combine all the combinations of two types:
+
+type Class = "wizard" | "warrior" | "rogue";
+type Race = "elf" | "human" | "dwarf";  
+type Hero = `Hero: ${Race} ${Class}`;
+
+//ARRAYS
+The most common common way to declare an array is using the bracket notation, string[], number[], e.t.c.
+
+function trainJedi(jediKnights: string[]){
+    for(let knight of jediKnights){
+        console.log(`Training ${knight}`);
+    }
+}
+
+trainJedi(["Dooku", "Qui-Gon", "Xanatos"]);
+
+//TYPE PARAMETERS
+Typescript offers an alternative way to declare arrays using type parameter syntax:
+Array<T>, which, for now, just know its basically that same as the "normal" T[] syntax.
+You'll see both versions in the wild.
+
+These function declarations are the same:
+
+//using bracket notation
+function assignLightsaberColors(name: string, colors: string[]): void {
+    //...
+}
+
+//Using generic type parameter syntax
+function assignLightsaberColors(name: string, colors: Array<string>): void {
+    //...
+}
+
+//HETEROGENEOUS ARRAYS
+If you can do it in Javascript, you can model it in Typescript. 
+It might not always be pretty... but in this case it is!
+
+In languages like Go, you can't have an array that contains different types - at least
+not without using something a bit more complex like a struct or interface. But in 
+Typescript, we can just union the types!.
+
+//Typescript infers the type as (string | number)[]
+let lightsaberStyles = [1, 2, "double", "shoto"];
+
+function describe(style: string | number): string {
+    console.log(`Wield ${style} lightsaber`);
+}
+
+lightsaberStyles.map(describe);
+
+
+
+
+//REST PARAMETERS
+Rest parameters allow an indefinitte number of final arguments, and brings them into the function
+body as an array. They're denoted by three dots(...) before the parameter name.
+
+function gatherParty(partyName: string, ...adventurers: string[]): string {
+    return `${partyName} consists of: ${adventurers.join(", ")}`;
+}
+
+
+
+const msg = gatherParty("The Fellowship", "Frodo", "Sam", "Gandalf");
+console.log(msg);
+//The Fellowship consists of: Frodo, Sam, Gandalf
+

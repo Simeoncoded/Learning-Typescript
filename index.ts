@@ -123,19 +123,82 @@ console.log(newCharacter("Gandalf", "wizard"));
 
 export function estimateResponseTime(promptLength: number = 100, modelType: string = "text") {
 
-    let baseNumber = 0 
+    let baseNumber = 0
     let rateNumber = 0
 
     if (modelType === "text") {
         baseNumber = 2
-       rateNumber = .01
-    }else if(modelType === "image"){
+        rateNumber = .01
+    } else if (modelType === "image") {
         baseNumber = 5
         rateNumber = .02
-    }else if(modelType === "code") {
+    } else if (modelType === "code") {
         baseNumber = 3
         rateNumber = .05
     }
 
     return Math.round(baseNumber + rateNumber * promptLength)
+}
+
+//VALUE UNIONS (just like enums in c#)
+
+export type Priority = "low" | "medium" | "high" | "critical";
+
+export function setPriority(level: Priority) {
+    switch (level) {
+        case "low":
+            return 0
+        case "medium":
+            return 1
+        case "high":
+            return 2
+        case "critical":
+            return 3
+        default:
+            return 0
+    }
+}
+
+//SUPER SET UNIONS 
+export type EmploymentStatus = "employed" | "unemployed" | "student" | string;   
+
+
+updateEmploymentStatus("anything passed here will still work");
+
+export function updateEmploymentStatus(status: EmploymentStatus){
+    return `Employment status updated: ${status}`;
+}
+
+//TEMPLATE LITERAL TYPES
+export type LogLevel = "info" | "warn" | "error";
+export type LogSourceType = "api" | "database" | "file";
+
+export type LogMessage = `${LogLevel}: ${string}`;
+export type LogSource = `${LogSourceType}_${number}`
+
+
+export function createLogEntry(message: LogMessage, source: LogSource){
+    return `[${source} LOG -  ${message}]`;
+}
+
+//ARRAYS
+export function averageScore(ratings:number[]){
+    
+    if(ratings.length === 0) return 0;
+
+    return ratings.reduce((rating, sum) => {
+        return rating + sum
+    }, 0) / ratings.length;
+}
+
+//HETEROGENEOUS ARRAYS
+export function interpolateComment(
+    id: number,
+    comment: string,
+    comments: (string | number)[],
+) {
+    const index = comments.findIndex(c => c === id);
+
+    if(index === -1) return
+    comments[index]  = comment
 }
