@@ -162,7 +162,6 @@ export function setPriority(level: Priority) {
 //SUPER SET UNIONS 
 export type EmploymentStatus = "employed" | "unemployed" | "student" | string;   
 
-
 updateEmploymentStatus("anything passed here will still work");
 
 export function updateEmploymentStatus(status: EmploymentStatus){
@@ -175,7 +174,6 @@ export type LogSourceType = "api" | "database" | "file";
 
 export type LogMessage = `${LogLevel}: ${string}`;
 export type LogSource = `${LogSourceType}_${number}`
-
 
 export function createLogEntry(message: LogMessage, source: LogSource){
     return `[${source} LOG -  ${message}]`;
@@ -201,4 +199,41 @@ export function interpolateComment(
 
     if(index === -1) return
     comments[index]  = comment
+}
+
+//REST PARAMETERS
+export function formatLabels(...labels: string[]){
+    if(labels.length === 0) return "No Labels";
+
+    if(labels.length === 1) return `Label: ${labels[0]   }`
+
+    return `Labels: ${labels.join(", ")}`;
+}
+
+//EVOLVING ANY
+// export function collectSupportData(id: number, resolved: boolean){
+//     const supportData = [];
+//     supportData.push("Support session started")
+//     supportData.push(id)    
+//     supportData.push(resolved)
+
+//     return supportData;
+// }
+
+
+//OBJECT LITERAL TYPES
+
+export type Mail = {
+    from: string;
+    to: string[];
+    subject: string;
+    body: string;
+    urgent: boolean;
+}
+
+export function processMail(mail : Mail){
+    return `FROM : ${mail.from}
+    TO: ${mail.to}
+    SUBJECT:${mail.urgent ? "[URGENT]" : ""}${mail.subject}
+    BODY: $ ${mail.body}`;
 }

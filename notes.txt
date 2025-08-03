@@ -234,3 +234,33 @@ const msg = gatherParty("The Fellowship", "Frodo", "Sam", "Gandalf");
 console.log(msg);
 //The Fellowship consists of: Frodo, Sam, Gandalf
 
+
+//Evolving Any
+When you create a new empty array, TypeScript infers it as any[].
+
+let inventory = [];
+//inventory: any[]
+
+If you then push a type into it, TypeScript will infer the array as that type
+inventory.push(42);
+//inventory: number[]
+
+//OBJECTS
+When it comes to the most useful upgrade from Javascript to Typescript, 
+its adding types to objects.
+
+Object Literal  types allow you to describe the shape of an object.
+
+function logSaiyan(saiyan: { name:string; power:number }{
+    console.log(`${saiyan.name} has power level: ${saiyan.power})
+})
+
+//EXTRA PROPERTIES
+Most of the time, when you pass an object to a function in typescript, its:
+
+1. Ok to have more properties than those defined in the functions parameter type.
+2. Not ok to have missing properties
+
+However, when you have an object literal type directly to a function, Typescript
+performs whats called "excess property checking". which means it also will now allow extra properties   
+
