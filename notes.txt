@@ -263,5 +263,3 @@ Most of the time, when you pass an object to a function in typescript, its:
 
 However, when you have an object literal type directly to a function, Typescript
 performs whats called "excess property checking". which means it also will now allow extra properties   
-
-//continue learning 
