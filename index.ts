@@ -237,3 +237,20 @@ export function processMail(mail : Mail){
     SUBJECT:${mail.urgent ? "[URGENT]" : ""}${mail.subject}
     BODY: $ ${mail.body}`;
 }
+
+//OPTIONAL OBJECT PROPERTIES
+export type MailNow = {
+    from: string;
+    to: string[];
+    subject: string;
+    body: string;
+    urgent: boolean;
+    cc?: string[]; //cc is optional
+};
+
+export function theProcessMail(mail: MailNow){
+    return `FROM: ${mail.from}
+    TO: ${mail.to}${!mail.cc ? "" : "\nCC: " + mail.cc}
+    SUBJECT: ${mail.urgent ? "[URGENT] " : ""}${mail.subject}
+    BODY: ${mail.body}`;
+}
