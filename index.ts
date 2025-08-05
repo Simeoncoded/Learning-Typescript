@@ -254,3 +254,48 @@ export function theProcessMail(mail: MailNow){
     SUBJECT: ${mail.urgent ? "[URGENT] " : ""}${mail.subject}
     BODY: ${mail.body}`;
 }
+
+
+//DISCRIMINATED UNIONS
+type InternalAddress = {
+    kind: "internal",
+    firstName: string
+    lastName: string
+}
+type ExternalAddress = {
+    kind: "external",
+    username: string
+    domain: string
+}
+
+
+//SETS
+export function findNumUniqueLabels(formattedAddresses: string[]) {
+    const set = new Set(formattedAddresses)
+    return set.size; //returns the length
+}
+
+//creating a set in javascript   //set automatically removes duplicate values 
+// const set = new Set([1, 2, 3, 3])
+
+
+// const theSet = new Set<string>()
+// theSet.add("sdf")
+
+//MAPS
+export function getFileLength(files: Map<string, string>, filename: string){
+    const file  = files.get(filename)
+    if(file == null) return 0
+    return new TextEncoder().encode(file).length
+}
+
+//in objects the key must be a string 
+
+
+//maps , key can be anything
+const map = new Map<string, number>()
+
+//default values for maps 
+//const map = new Map([[1, 2], [3, 4]])
+
+map.set("sdfds", 235)

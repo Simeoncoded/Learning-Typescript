@@ -293,3 +293,54 @@ this is actually allowed:
 
 let newUser = {};
 newUser = "Lane";
+
+//DISCRIMINATED UNIONS
+A union of two primitive types, like string | number, is really simple: its a string or a number. 
+The same is true of object types, but it can be tricky to know which type you're dealing with. Thats where
+"discriminant properties" (or "tags") come in handy. Its just a property that tells you which type you are dealing
+with, and makes it easy to use conditional logic to handle each type. What is special about is it can be onl one value.
+
+Unions of objects with a discriminant property are called "discriminited unions" or "tagged unions".
+
+type MultipleChoiceLesson = {
+    kind: "multiple-choice"; //discriminant property
+    question: string;
+    studentAnswer: string;
+    correctAnswer: string;
+};
+
+type CodingLesson = {
+    kind: "coding"; //Disciminant property
+    studentCode: string;
+    solutionCode: string;
+};
+
+type Lesson = MultipleChoiceLesson | CodingLesson;
+
+function isCorrect(lesson: Lesson): boolean {
+    switch(lesson.kind){
+        case "multiple-choice:
+            return lesson.studentAnswer === lesson.correctAnswer;
+        case "coding":
+            return lesson.studentAnswer === lesson.solutionCode;
+    }
+}
+
+
+//SETS
+TypeScript has a built-in type for sets, which are collections of unique values. 
+You can ensure that all the values in the set are of the same type by specifying a 
+type parameter.: <T>
+
+//A Set that contains only strings
+const justiceLeague = new Set<string>();
+
+justiceLeague.add("Green Arrow");
+justiceLeague.add("Flash");
+
+//Error: Argument of type '2' is not assignable
+justiceLeague.add(2);
+
+//MAPS  
+TypeScript(obviously) also has a built-in for maps, which are collection of key-value pairs. You can specify the types
+ of the keys and values using type parameters<K, V>.
