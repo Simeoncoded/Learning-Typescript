@@ -299,3 +299,12 @@ const map = new Map<string, number>()
 //const map = new Map([[1, 2], [3, 4]])
 
 map.set("sdfds", 235)
+
+//DYNAMIC KEYS
+export type MailPreferences = {
+    [key: string]: boolean
+};
+
+const a: MailPreferences = {
+    ssdsd: false
+}
