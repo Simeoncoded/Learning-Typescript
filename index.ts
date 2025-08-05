@@ -308,3 +308,6 @@ export type MailPreferences = {
 const a: MailPreferences = {
     ssdsd: false
 }
+
+//same thing with the one above
+export type MailPreferences2 = Record<string, boolean>; //record is just an object
