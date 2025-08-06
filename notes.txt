@@ -461,3 +461,37 @@ configConst.admins.johnny = "kreese";
 
 //This is also fine because the array is not frozen
 configConst.features.push("sweep the leg");
+
+
+//SATISFIES
+The satisfies operator validates that a value matches a specific type without changing it inferred type.
+It solves a common pain point in TypeScript's type system. Before satisfies, you often had to choose between:
+
+1.Letting TypeScript infer types(good for flexbility, but might miss errors)
+2.Using explicit type annotations(good for catching errors, but loses literal information)
+
+
+//FUNCTION OVERLOAD 
+Javascript is very lenient when it comes to function signatures, and Typescript gives us a way to take
+advantage of that flexbility while still maintaining type safety: function overloads.
+
+First, we define a function that can be called in multiple ways:
+
+function formatEmployeeMessage(
+    employee : Employee,
+    isNew?: boolean,
+    onBoardedDate? : Date,
+): string {
+    if(!isNew){
+        return `Employee: ${employee.name}, Dept: ${employee.department}`;
+    }
+    return `Employee: ${employee.name}, New: Yes, onboarded
+}
+
+Used as-is, this function can be called in 3 different ways:    
+formatEmployeeMessage(employee)
+formatEmployeeMessage(employee, boolean)
+formatEmployeeMessage(employee, boolean, Date)
+
+But we can constrain the function to only allow certain combinations 
+of parameters by using functino overloads.
