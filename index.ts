@@ -311,3 +311,43 @@ const a: MailPreferences = {
 
 //same thing with the one above
 export type MailPreferences2 = Record<string, boolean>; //record is just an object
+
+
+//DYNAMIC DEFAULT PROPERTIES
+export type MailPreferences3 = {
+    doNotDisturb: boolean;
+    outOfOffice: boolean;
+
+    [key: string]: string | boolean
+};
+
+
+//READONLY MODIFIER
+export type MailPreferences4 = {
+    readonly [key: PropertyKey]: boolean | string;
+    readonly doNotDisturb: boolean;
+    readonly outOfOffice: boolean;
+};
+
+const aa : MailPreferences4 = {
+    doNotDisturb: false,
+    outOfOffice: false
+}
+
+//AS CONST  AND OBJECT.FREEZE
+
+export const defaultPreferences = {
+    name: "Kreese",
+    doNotDisturb: false,
+    outOfOffice: false,
+} as const;
+
+//will work can push stuff
+const colorsConst = ["red", "green", "blue"]
+colorsConst.push("yellow");
+
+
+
+const colorsConstOne = ["red","green","blue"] as const
+//push will not work because of as const , becasue its now a readonly array 
+//colorsConstOne.push("yellow");
