@@ -494,4 +494,28 @@ formatEmployeeMessage(employee, boolean)
 formatEmployeeMessage(employee, boolean, Date)
 
 But we can constrain the function to only allow certain combinations 
-of parameters by using functino overloads.
+of parameters by using function overloads.
+
+
+//TUPLES
+A tuple is a special kind of array where each position has a specific, known type
+
+const nameAndAge: [string, number]  = ["Rose Tyler", 12];
+
+//Readonly
+Tuples in TypeScript are (guh) still arrays under the hood, so counterintuitively you can 
+still push to them and pop from them. This is a bit of gotcha, tuples in most languages are fixed lenght.
+
+
+//TUPLES VS OBJECTS
+So why would you use a tuple instead of an object? For example, this 
+
+function getCoordinates() : [number, number]{
+    return[40.7128,-74.006]
+}
+
+instead of this 
+
+function getCoordinatesAsObjet(): { lat:numeber; lng: number }{
+    return {lat:40.7128, lng: -74.006 }
+}

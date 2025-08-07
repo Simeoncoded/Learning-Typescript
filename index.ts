@@ -351,3 +351,15 @@ colorsConst.push("yellow");
 const colorsConstOne = ["red","green","blue"] as const
 //push will not work because of as const , becasue its now a readonly array 
 //colorsConstOne.push("yellow");
+
+
+//TUPLES
+export function createTicket(
+    prevTicket: number,
+    comment: string,
+): [number, string, boolean]{
+    return [++prevTicket,comment, comment.toLowerCase().includes("critical")]
+}
+
+
+const [numm, str, bool] = createTicket(1, "sdf")
