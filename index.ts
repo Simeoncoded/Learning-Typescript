@@ -335,7 +335,6 @@ const aa : MailPreferences4 = {
 }
 
 //AS CONST  AND OBJECT.FREEZE
-
 export const defaultPreferences = {
     name: "Kreese",
     doNotDisturb: false,
@@ -363,3 +362,5 @@ export function createTicket(
 
 
 const [numm, str, bool] = createTicket(1, "sdf")
+
+//keep learning
