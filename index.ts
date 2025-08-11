@@ -362,5 +362,3 @@ export function createTicket(
 
 
 const [numm, str, bool] = createTicket(1, "sdf")
-
-//keep learning
