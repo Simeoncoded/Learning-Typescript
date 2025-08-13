@@ -353,7 +353,7 @@ const colorsConstOne = ["red","green","blue"] as const
 
 
 //TUPLES
-export function createTicket(
+export function create1icket(
     prevTicket: number,
     comment: string,
 ): [number, string, boolean]{
@@ -362,3 +362,12 @@ export function createTicket(
 
 
 const [numm, str, bool] = createTicket(1, "sdf")
+
+
+//TUPLE REST ELEMENTS
+export function tokenize(input: string): [number, ...string[]]{
+    const values = input.split(" ")
+    return [values.length / 100, ...values];
+}
+
+//INTERSECTION OF TYPES

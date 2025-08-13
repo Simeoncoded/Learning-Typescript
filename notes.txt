@@ -539,3 +539,53 @@ Theres nothing stopping you from desctructuring nested tuples and objects all at
 
 //NAMED TUPLES
 To be fair, position-based access isnt very descriptive.
+Luckily, you can label elements(Sometimes called "named tuples").
+So, instead of this:
+
+type UserData = [string, number, boolean];
+
+we can do this:
+type UserDataLabeled = [name:string, age:number, isAdmin: boolean];
+
+Optional Elements in Tuples
+Like object properties, you can make tuple elements optional using the ? modifier:
+
+type HttpResponse = [statusCode: number, data: string, error?: string]
+
+//TUPLE REST Elements
+TypeScript allows tuples to have a variable number of elements og a specific type using rest elements.
+This is nice when you want a tuple to have  a fixed-length beginning but a flexible-length ending.
+
+//A tuple with a rest element
+type NameAndScores = [string, ...number[]];
+
+
+//All of these are valid
+const nameAndScores: NameAndScores = ["Alphonse,69,42];
+const nameAndScores: NameAndScores = ["Winry",42];
+const nameAndScores: NameAndScores = ["Edward"];
+
+
+//INTERSECTION OF TYPES
+An intersection type combines multiple types into one with the & operator.
+Th resulting intersection type satisfies all the component types 
+simultaneously.
+
+type IndividualContributor = {
+id: number;
+name: string;
+tasks: string[];
+};
+
+type Manager = {
+    directReports : number[];
+};
+
+type GoodManager = IndividualContributor & manger;
+
+const hunter : GoodManager = {
+    Id: 1,
+    name: "Hunter Backmann",
+    tasks: ["Fixing Lane's lame code", "Vibe coding"];
+    directRerports: [2,3,4],
+};
