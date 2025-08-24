@@ -321,6 +321,7 @@ export type MailPreferences3 = {
     [key: string]: string | boolean
 };
 
+//but when the readonly parameter is just here how do we analyse this stil workrs for some time 
 
 //READONLY MODIFIER
 export type MailPreferences4 = {
@@ -371,3 +372,5 @@ export function tokenize(input: string): [number, ...string[]]{
 }
 
 //INTERSECTION OF TYPES
+
+//keep learning 
